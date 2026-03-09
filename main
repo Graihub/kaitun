@@ -2310,170 +2310,42 @@ QuestNeta = function()
 			[6] = PosQ,
 		};
 	end;
-	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/main/source.lua"))():MakeWindow({
-    
-    local Window = Fluennt :CreateWindow({
-    Title = "BaMia Hub",
-    SubTitle = "By BelBel",
+	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/main/source.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Turbo Lite Hub",
+    SubTitle = "Fluent UI",
     TabWidth = 160,
-    Size = UDim2.fromOffset(520, 400),
+    Size = UDim2.fromOffset(580, 460),
     Acrylic = true,
-    Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl,
+    Theme = "Dark"
 })
--- Criar ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "ControlGUI"
-screenGui.Parent = game.CoreGui
 
--- Criar ImageButton
-local imageButton = Instance.new("ImageButton")
-imageButton.Size = UDim2.new(0, 35, 0, 35)
-imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-imageButton.Image = "rbxassetid://85288799798332"
-imageButton.BackgroundTransparency = 1
-imageButton.Parent = screenGui
+local Status = Window:AddTab({Title="Info & Server"})
+local Farm = Window:AddTab({Title="Tab Farming"})
+local Others = Window:AddTab({Title="Stack Farm"})
+local Maestry = Window:AddTab({Title="Farm Mastery"})
+local Event = Window:AddTab({Title="Sea Event"})
+local Race = Window:AddTab({Title="Upgrade V4"})
+local Dojo = Window:AddTab({Title="Dojo & Drago Race"})
+local Get = Window:AddTab({Title="Get Item & Upgrade"})
+local Fruit = Window:AddTab({Title="Raid & Fruit"})
+local Player = Window:AddTab({Title="Local Player"})
+local Shop = Window:AddTab({Title="Local Shop"})
+local Esp = Window:AddTab({Title="Stats & ESP"})
+local Teleport = Window:AddTab({Title="Tab Teleport"})
+local Setting = Window:AddTab({Title="Setting & UI"})
 
--- Adicionar cantos arredondados
-local uiCorner = Instance.new("UICorner")
-uiCorner.CornerRadius = UDim.new(0.5, 0)
-uiCorner.Parent = imageButton
+Status:AddParagraph({
+    Title = "Server Discord Bamia Hub",
+    Content = "Join for update <3"
+})
 
--- Adicionar borda AMARELA
-local uiStroke = Instance.new("UIStroke", imageButton)
-uiStroke.Thickness = 2
-uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uiStroke.Color = Color3.fromRGB(204, 153, 102) -- Màu khô gà (nâu vàng)
-
--- Variáveis para arrastar
-local dragging = false
-local dragInput
-local dragStart
-local startPos
-
--- Função para atualizar posição
-local function update(input)
-    local delta = input.Position - dragStart
-    imageButton.Position = UDim2.new(
-        startPos.X.Scale,
-        startPos.X.Offset + delta.X,
-        startPos.Y.Scale,
-        startPos.Y.Offset + delta.Y
-    )
-end
-
--- Detectar início do arrasto
-imageButton.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true
-        dragStart = input.Position
-        startPos = imageButton.Position
-        
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
+Status:AddButton({
+    Title = "Copy Discord Link",
+    Callback = function()
+        setclipboard("https://discord.gg/qVa6jedW9p")
     end
-end)
-
--- Detectar movimento do mouse
-imageButton.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
-    end
-end)
-
--- Atualizar posição durante arrasto
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if dragging and input == dragInput then
-        update(input)
-    end
-end)
-
--- Abrir/Fechar GUI (Minimize)
-local isOpen = true
-imageButton.MouseButton1Click:Connect(function()
-    isOpen = not isOpen
-    if isOpen then
-        Library:Minimize(false)
-    else
-        Library:Minimize(true)
-    end
-end)
-local Window = Window:AddTab({
-    Title = "Info & Server",
-    Icon = "rbxassetid://7040410130"
-})
-
-local Farm = Window:AddTab({
-    Title = "Tab Farming",
-    Icon = "rbxassetid://127561653320876"
-})
-
-local Others = Window:AddTab({
-    Title = "Stack Farm",
-    Icon = "rbxassetid://10723405360"
-})
-
-local Mastery = Window:AddTab({
-    Title = "Farm Mastery",
-    Icon = "rbxassetid://10709782497"
-})
-
-local Event = Window:AddTab({
-    Title = "Sea Event",
-    Icon = "rbxassetid://10709783577"
-})
-
-local Race = Window:AddTab({
-    Title = "Upgrade V4",
-    Icon = "rbxassetid://115164375298022"
-})
-
-local Dojo = Window:AddTab({
-    Title = "Dojo & Drago Race",
-    Icon = "rbxassetid://91920478152016"
-})
-
-local Get = Window:AddTab({
-    Title = "Get Item & Upgrade",
-    Icon = "rbxassetid://13075622619"
-})
-
-local Fruit = Window:AddTab({
-    Title = "Raid & Fruit",
-    Icon = "rbxassetid://11155986081"
-})
-
-local Player = Window:AddTab({
-    Title = "Local Player",
-    Icon = "rbxassetid://13075651575"
-})
-
-local Shop = Window:AddTab({
-    Title = "Local Shop",
-    Icon = "rbxassetid://6031265976"
-})
-
-local Esp = Window:AddTab({
-    Title = "Stats & ESP",
-    Icon = "rbxassetid://11155851001"
-})
-
-local Teleport = Window:AddTab({
-    Title = "Tab Teleport",
-    Icon = "rbxassetid://10734886004"
-})
-local Setting = Window:AddTab({
-    Title = "Setting & UI",
-    Icon = "rbxassetid://7734053495"
-})
-Status:AddDiscordInvite({
-    Name = "Server Discord Bamia Hub",
-    Description = "join for Update <3",
-    Logo = "rbxassetid://85288799798332",
-    Invite = "https://discord.gg/qVa6jedW9p"
 })
 
 Shop:AddSection("Fighting Shop")
@@ -3172,7 +3044,9 @@ local function y5(I)
 	return e and e.Health > 0;
 end
 
-Farm:AddSection({"Auto Farm"})
+Farm:AddParagraph({
+    Title = "Auto Farm"
+})
 Farm:AddDropdown({
     Name = "Select Farm Mode",
     Description = "chọn chế độ farm",
