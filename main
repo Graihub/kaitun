@@ -2324,7 +2324,7 @@ screenGui.Parent = game.CoreGui
 local imageButton = Instance.new("ImageButton")
 imageButton.Size = UDim2.new(0, 35, 0, 35)
 imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-imageButton.Image = "rbxassetid://103268426470966"
+imageButton.Image = "rbxassetid://80909425320793",
 imageButton.BackgroundTransparency = 1
 imageButton.Parent = screenGui
 
@@ -2468,7 +2468,7 @@ local Setting = Library:MakeTab({
 Status:AddDiscordInvite({
     Name = "Server Discord Bamia Hub",
     Description = "join for Update <3",
-    Logo = "rbxassetid://103268426470966",
+    Logo = "rbxassetid://80909425320793",
     Invite = "https://discord.gg/cJcQvFU79N"
 
 Shop:AddSection("Fighting Shop")
