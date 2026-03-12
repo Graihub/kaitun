@@ -2322,7 +2322,7 @@ screenGui.Parent = game.CoreGui
 
 -- Criar ImageButton
 local imageButton = Instance.new("ImageButton")
-imageButton.Size = UDim2.new(0, 100, 0, 100)
+imageButton.Size = UDim2.new(0, 35, 0, 35)
 imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
 imageButton.Image = "rbxassetid://103268426470966"
 imageButton.BackgroundTransparency = 1
