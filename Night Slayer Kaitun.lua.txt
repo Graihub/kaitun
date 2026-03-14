@@ -265,71 +265,51 @@ L_1_[11]["Name"] = "Status_UI"
 L_1_[11]["ResetOnSpawn"] = false
 L_1_[11]["Parent"] = L_1_[43]
 
-L_1_[42] = Instance["new"]("Frame")
-L_1_[42]["Size"] = UDim2["new"](0, 150, 0, 50)
-L_1_[42]["Position"] = UDim2["new"](1, -10, .5, 0)
-L_1_[42]["AnchorPoint"] = Vector2["new"](1, .5)
-L_1_[42]["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
-L_1_[42]["BackgroundTransparency"] = .25
-L_1_[42]["BorderSizePixel"] = 2
-L_1_[42]["BorderColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[42]["Parent"] = L_1_[11]
-L_1_[41] = Instance["new"]("UICorner")
-L_1_[41]["CornerRadius"] = UDim["new"](0, 6)
-L_1_[41]["Parent"] = L_1_[42]
-L_1_[12] = Instance["new"]("UIStroke")
-L_1_[12]["Thickness"] = 2
-L_1_[12]["Color"] = Color3["fromRGB"](255, 0, 0)
-L_1_[12]["ApplyStrokeMode"] = Enum["ApplyStrokeMode"]["Border"]
-L_1_[12]["Parent"] = L_1_[42]
-L_1_[15] = Instance["new"]("TextLabel")
-L_1_[15]["Size"] = UDim2["new"](1, -10, .5, 0)
-L_1_[15]["Position"] = UDim2["new"](.5, 0, 0, 2)
-L_1_[15]["AnchorPoint"] = Vector2["new"](.5, 0)
-L_1_[15]["BackgroundTransparency"] = 1
-L_1_[15]["Text"] = "Night Slayer Hub - Kaitun"
-L_1_[15]["TextColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[15]["TextSize"] = 13
-L_1_[15]["Font"] = Enum["Font"]["GothamBold"]
-L_1_[15]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
-L_1_[15]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
-L_1_[15]["Parent"] = L_1_[42]
-L_1_[26] = Instance["new"]("TextLabel")
-L_1_[26]["Size"] = UDim2["new"](1, -10, .4, 0)
-L_1_[26]["Position"] = UDim2["new"](.5, 0, .5, 0)
-L_1_[26]["AnchorPoint"] = Vector2["new"](.5, 0)
-L_1_[26]["BackgroundTransparency"] = 1
-L_1_[26]["Text"] = "Status : N/A"
-L_1_[26]["TextColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[26]["TextSize"] = 12
-L_1_[26]["Font"] = Enum["Font"]["Gotham"]
-L_1_[26]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
-L_1_[26]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
-L_1_[26]["Parent"] = L_1_[42]
+L_1_[42] = Instance.new("Frame")
+L_1_[42].Size = UDim2.new(0, 150, 0, 50)
+L_1_[42].Position = UDim2.new(1, -10, 0.5, 0)
+L_1_[42].AnchorPoint = Vector2.new(1, 0.5)
+L_1_[42].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+L_1_[42].BackgroundTransparency = 0.25
+L_1_[42].BorderSizePixel = 2
+L_1_[42].BorderColor3 = Color3.fromRGB(255, 0, 0)
+L_1_[42].Parent = L_1_[11]
 
-L_NEW_FRAME = Instance["new"]("Frame")
-L_NEW_FRAME["Size"] = UDim2["new"](0, 250, 0, 60)
-L_NEW_FRAME["Position"] = UDim2["new"](.5, 0, .13, 0)
-L_NEW_FRAME["AnchorPoint"] = Vector2["new"](.5, .5)
-L_NEW_FRAME["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
-L_NEW_FRAME["BackgroundTransparency"] = .25
-L_NEW_FRAME["Parent"] = L_1_[11]
-L_NEW_CORNER = Instance["new"]("UICorner")
-L_NEW_CORNER["CornerRadius"] = UDim["new"](0, 6)
-L_NEW_CORNER["Parent"] = L_NEW_FRAME
-L_NEW_STROKE = Instance["new"]("UIStroke")
-L_NEW_STROKE["Thickness"] = 2
-L_NEW_STROKE["Color"] = Color3["fromRGB"](255, 0, 0)
-L_NEW_STROKE["ApplyStrokeMode"] = Enum["ApplyStrokeMode"]["Border"]
-L_NEW_STROKE["Parent"] = L_NEW_FRAME
-L_NEW_TEXT = Instance["new"]("TextLabel")
-L_NEW_TEXT["Size"] = UDim2["new"](1, 0, 1, 0)
-L_NEW_TEXT["BackgroundTransparency"] = 1
-L_NEW_TEXT["Text"] = "Night Slayer Hub"
-L_NEW_TEXT["TextColor3"] = Color3["fromRGB"](255, 0, 0)
-L_NEW_TEXT["TextSize"] = 14
-L_NEW_TEXT["Font"] = Enum["Font"]["GothamBold"]
-L_NEW_TEXT["Parent"] = L_NEW_FRAME
+L_1_[41] = Instance.new("UICorner")
+L_1_[41].CornerRadius = UDim.new(0, 6)
+L_1_[41].Parent = L_1_[42]
+
+L_1_[12] = Instance.new("UIStroke")
+L_1_[12].Thickness = 2
+L_1_[12].Color = Color3.fromRGB(255, 0, 0)
+L_1_[12].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+L_1_[12].Parent = L_1_[42]
+
+L_1_[43] = Instance.new("ImageLabel")
+L_1_[43].Size = UDim2.new(0, 30, 0, 30)
+L_1_[43].Position = UDim2.new(0, 5, 0.5, 0)
+L_1_[43].AnchorPoint = Vector2.new(0, 0.5)
+L_1_[43].BackgroundTransparency = 1
+L_1_[43].Image = "rbxassetid://103268426470966"
+L_1_[43].Parent = L_1_[42]
+
+L_1_[44] = Instance.new("UICorner")
+L_1_[44].CornerRadius = UDim.new(0, 4)
+L_1_[44].Parent = L_1_[43]
+
+L_1_[15] = Instance.new("TextLabel")
+L_1_[15].Size = UDim2.new(1, -45, 1, 0)
+L_1_[15].Position = UDim2.new(0.5, 10, 0.5, 0)
+L_1_[15].AnchorPoint = Vector2.new(0.5, 0.5)
+L_1_[15].BackgroundTransparency = 1
+L_1_[15].Text = "Night Slayer Hub - Kaitun\nStatus : N/A"
+L_1_[15].TextColor3 = Color3.fromRGB(255, 0, 0)
+L_1_[15].TextSize = 13
+L_1_[15].Font = Enum.Font.GothamBold
+L_1_[15].TextXAlignment = Enum.TextXAlignment.Center
+L_1_[15].TextYAlignment = Enum.TextYAlignment.Center
+L_1_[15].RichText = true
+L_1_[15].Parent = L_1_[42]
 
 task["spawn"](function()
 	while task["wait"]() do
@@ -2741,7 +2721,6 @@ task["spawn"](function()
 		end)
 	end
 end);
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/refs/heads/main/attack-module.lua"))()
 (getgenv())["Fast Attack"] = true
 L_1_[20] = 0
 task["spawn"](function()
