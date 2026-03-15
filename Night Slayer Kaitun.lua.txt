@@ -414,31 +414,6 @@ getgenv().CrystalStatus = CrystalUI.SetStatus
 
 -- Thông báo UI đã được tạo
 CrystalUI.SetStatus("UI Loaded - Waiting for script...")
-task["spawn"](function()
-	while task["wait"]() do
-		local L_27_ = {}
-		L_27_[4] = L_1_[6]:Create(L_1_[12], TweenInfo["new"](1.2, Enum["EasingStyle"]["Quad"], Enum["EasingDirection"]["Out"]), {["Color"] = Color3["fromRGB"](255, 0, 0)})
-		L_27_[5] = L_1_[6]:Create(L_1_[12], TweenInfo["new"](1.2, Enum["EasingStyle"]["Quad"], Enum["EasingDirection"]["Out"]), {["Color"] = Color3["fromRGB"](255, 0, 0)})
-		L_27_[2] = L_1_[6]:Create(L_1_[15], TweenInfo["new"](1.2), {["TextColor3"] = Color3["fromRGB"](255, 0, 0)})
-		L_27_[3] = L_1_[6]:Create(L_1_[15], TweenInfo["new"](1.2), {["TextColor3"] = Color3["fromRGB"](255, 0, 0)})
-		L_27_[1] = L_1_[6]:Create(L_1_[26], TweenInfo["new"](1.2), {["TextColor3"] = Color3["fromRGB"](255, 0, 0)})
-		L_27_[7] = L_1_[6]:Create(L_1_[26], TweenInfo["new"](1.2), {["TextColor3"] = Color3["fromRGB"](255, 0, 0)})
-		
-		local L_NEW_TWEEN = L_1_[6]:Create(L_NEW_STROKE, TweenInfo["new"](1.2), {["Color"] = Color3["fromRGB"](255, 0, 0)})
-		local L_NEW_TEXT_TWEEN = L_1_[6]:Create(L_NEW_TEXT, TweenInfo["new"](1.2), {["TextColor3"] = Color3["fromRGB"](255, 0, 0)})
-
-		L_27_[4]:Play()
-		L_27_[2]:Play()
-		L_27_[1]:Play()
-		L_NEW_TWEEN:Play()
-		L_NEW_TEXT_TWEEN:Play()
-		L_27_[4]["Completed"]:Wait()
-		L_27_[5]:Play()
-		L_27_[3]:Play()
-		L_27_[7]:Play()
-		L_27_[5]["Completed"]:Wait()
-	end
-end)
 if L_1_[30] == 2753915549 then
 	Old_World = true
 elseif L_1_[30] == 4442272183 then
