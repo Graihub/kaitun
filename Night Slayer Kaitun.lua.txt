@@ -255,70 +255,117 @@ task["spawn"](function()
 		shared["BC_2"] = true
 	end
 end)
-L_1_[43] = game:GetService("CoreGui")
-L_1_[6] = game:GetService("TweenService")
-if L_1_[43]:FindFirstChild("Status_UI") then
-	L_1_[43]["Status_UI"]:Destroy()
+local function CreateCrystalUI()
+    -- Sử dụng CoreGui thay vì PlayerGui (giống code cũ)
+    local CoreGui = game:GetService("CoreGui")
+    
+    -- Xóa UI cũ nếu tồn tại
+    if CoreGui:FindFirstChild("CrystalHubUI") then
+        CoreGui.CrystalHubUI:Destroy()
+    end
+    
+    -- Tạo ScreenGui trong CoreGui
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "CrystalHubUI"
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.Parent = CoreGui
+    
+    -- Frame chính (đặt giữa trên, cách top 10px)
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(0, 250, 0, 70)  -- Kích thước vừa phải
+    MainFrame.Position = UDim2.new(0.5, 0, 0, 10)
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(0, 20, 0)  -- Màu xanh đen
+    MainFrame.BackgroundTransparency = 0.3
+    MainFrame.BorderSizePixel = 0
+    MainFrame.Parent = ScreenGui
+    
+    -- Bo góc
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 6)
+    UICorner.Parent = MainFrame
+    
+    -- Viền sáng với gradient xanh
+    local UIStroke = Instance.new("UIStroke")
+    UIStroke.Color = Color3.fromRGB(0, 255, 0)
+    UIStroke.Thickness = 2.5
+    UIStroke.Parent = MainFrame
+    
+    local UIGradientStroke = Instance.new("UIGradient")
+    UIGradientStroke.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 0)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0))
+    })
+    UIGradientStroke.Parent = UIStroke
+    
+    -- Logo nhỏ (giữ lại icon rùa, đặt bên trái)
+    local TurtleIcon = Instance.new("ImageLabel")
+    TurtleIcon.Name = "TurtleIcon"
+    TurtleIcon.Size = UDim2.new(0, 30, 0, 30)
+    TurtleIcon.Position = UDim2.new(0, 5, 0.5, 0)
+    TurtleIcon.AnchorPoint = Vector2.new(0, 0.5)
+    TurtleIcon.BackgroundTransparency = 1
+    TurtleIcon.Image = "rbxassetid://117891630942237"  -- ID icon rùa
+    TurtleIcon.Rotation = 15
+    TurtleIcon.Parent = MainFrame
+    
+    -- Label tiêu đề (gộp label 1)
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.Name = "TitleLabel"
+    TitleLabel.Font = Enum.Font.GothamBold
+    TitleLabel.Text = "BelBel Hub | Finder Fruits"
+    TitleLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+    TitleLabel.TextSize = 14
+    TitleLabel.AnchorPoint = Vector2.new(0.5, 0)
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Position = UDim2.new(0.5, 15, 0, 5)  -- Dịch phải để nhường logo
+    TitleLabel.Size = UDim2.new(1, -50, 0.5, 0)
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Center
+    TitleLabel.TextYAlignment = Enum.TextYAlignment.Center
+    TitleLabel.Parent = MainFrame
+    
+    -- Gradient cho tiêu đề
+    local TitleGradient = Instance.new("UIGradient")
+    TitleGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 100)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 50)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0))
+    })
+    TitleGradient.Parent = TitleLabel
+    
+    -- Label trạng thái (gộp label 2)
+    local StatusLabel = Instance.new("TextLabel")
+    StatusLabel.Name = "StatusLabel"
+    StatusLabel.Font = Enum.Font.Gotham
+    StatusLabel.Text = "Status: Starting..."
+    StatusLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
+    StatusLabel.TextSize = 12
+    StatusLabel.AnchorPoint = Vector2.new(0.5, 0)
+    StatusLabel.BackgroundTransparency = 1
+    StatusLabel.Position = UDim2.new(0.5, 15, 0.5, 5)  -- Dịch phải, nằm dưới title
+    StatusLabel.Size = UDim2.new(1, -50, 0.4, 0)
+    StatusLabel.TextXAlignment = Enum.TextXAlignment.Center
+    StatusLabel.TextYAlignment = Enum.TextYAlignment.Center
+    StatusLabel.Parent = MainFrame
+    
+    -- Hàm cập nhật trạng thái
+    local function SetStatus(text)
+        if StatusLabel then
+            StatusLabel.Text = "Status: " .. tostring(text)
+        end
+    end
+    
+    -- Trả về hàm để có thể gọi từ bên ngoài
+    return {
+        SetStatus = SetStatus
+    }
 end
-L_1_[11] = Instance["new"]("ScreenGui")
-L_1_[11]["Name"] = "Status_UI"
-L_1_[11]["ResetOnSpawn"] = false
-L_1_[11]["Parent"] = L_1_[43]
 
-L_1_[42] = Instance["new"]("Frame")
-L_1_[42]["Size"] = UDim2["new"](0, 250, 0, 70)
-L_1_[42]["Position"] = UDim2["new"](.5, 0, 0, 10)  -- Giữa theo chiều ngang, cách trên 10px
-L_1_[42]["AnchorPoint"] = Vector2["new"](.5, 0)    -- Neo ở giữa trên
-L_1_[42]["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
-L_1_[42]["BackgroundTransparency"] = .25
-L_1_[42]["BorderSizePixel"] = 2
-L_1_[42]["BorderColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[42]["Parent"] = L_1_[11]
-L_1_[41] = Instance["new"]("UICorner")
-L_1_[41]["CornerRadius"] = UDim["new"](0, 6)
-L_1_[41]["Parent"] = L_1_[42]
-L_1_[12] = Instance["new"]("UIStroke")
-L_1_[12]["Thickness"] = 2
-L_1_[12]["Color"] = Color3["fromRGB"](255, 0, 0)
-L_1_[12]["ApplyStrokeMode"] = Enum["ApplyStrokeMode"]["Border"]
-L_1_[12]["Parent"] = L_1_[42]
-
--- Logo nhỏ
-L_LOGO = Instance["new"]("ImageLabel")
-L_LOGO["Size"] = UDim2["new"](0, 30, 0, 30)
-L_LOGO["Position"] = UDim2["new"](0, 5, .5, 0)
-L_LOGO["AnchorPoint"] = Vector2["new"](0, .5)
-L_LOGO["BackgroundTransparency"] = 1
-L_LOGO["Image"] = "rbxassetid://1234567890"  -- Thay ID logo của bạn
-L_LOGO["Parent"] = L_1_[42]
-
--- Label 1 (tiêu đề chính)
-L_1_[15] = Instance["new"]("TextLabel")
-L_1_[15]["Size"] = UDim2["new"](1, -50, .5, 0)
-L_1_[15]["Position"] = UDim2["new"](.5, 15, 0, 5)
-L_1_[15]["AnchorPoint"] = Vector2["new"](.5, 0)
-L_1_[15]["BackgroundTransparency"] = 1
-L_1_[15]["Text"] = "Night Slayer Hub - Kaitun"
-L_1_[15]["TextColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[15]["TextSize"] = 14
-L_1_[15]["Font"] = Enum["Font"]["GothamBold"]
-L_1_[15]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
-L_1_[15]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
-L_1_[15]["Parent"] = L_1_[42]
-
--- Label 2 (Status)
-L_1_[26] = Instance["new"]("TextLabel")
-L_1_[26]["Size"] = UDim2["new"](1, -50, .4, 0)
-L_1_[26]["Position"] = UDim2["new"](.5, 15, .5, 5)
-L_1_[26]["AnchorPoint"] = Vector2["new"](.5, 0)
-L_1_[26]["BackgroundTransparency"] = 1
-L_1_[26]["Text"] = "Status : N/A"
-L_1_[26]["TextColor3"] = Color3["fromRGB"](255, 0, 0)
-L_1_[26]["TextSize"] = 12
-L_1_[26]["Font"] = Enum["Font"]["Gotham"]
-L_1_[26]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
-L_1_[26]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
-L_1_[26]["Parent"] = L_1_[42]
+-- Tạo UI và lưu hàm cập nhật
+local CrystalUI = CreateCrystalUI()
 
 task["spawn"](function()
 	while task["wait"]() do
