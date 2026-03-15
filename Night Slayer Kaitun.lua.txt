@@ -266,66 +266,67 @@ L_1_[11]["ResetOnSpawn"] = false
 L_1_[11]["Parent"] = L_1_[43]
 
 local turtle = Instance.new("ImageLabel")
+-- Turtle Icon
+local turtle = Instance.new("ImageLabel")
 turtle.Name = "TurtleIcon"
 turtle.Size = UDim2.new(0, 28, 0, 28)
-turtle.AnchorPoint = Vector2.new(0.5, 0.5)
-turtle.Position = UDim2.new(0.5, 0, 0.5, -30)  -- đưa lên trên một chút
+turtle.Position = UDim2.new(0.5, 0, 0, -14)
+turtle.AnchorPoint = Vector2.new(0.5, 0)
 turtle.BackgroundTransparency = 1
 turtle.Image = "rbxassetid://117891630942237"
 turtle.Rotation = 15
 turtle.Parent = Main
 
--- Khung chính
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 150, 0, 50)
-frame.AnchorPoint = Vector2.new(0.5, 0.5)
-frame.Position = UDim2.new(0.5, 0, 0.5, 10)  -- đặt dưới con rùa một chút
-frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
-frame.BackgroundTransparency = 0.25
-frame.BorderSizePixel = 2
-frame.BorderColor3 = Color3.fromRGB(255,0,0)
-frame.Parent = Main
+-- Main Frame
+L_1_[42] = Instance.new("Frame")
+L_1_[42].Size = UDim2.new(0, 150, 0, 50)
+L_1_[42].Position = UDim2.new(0.5, 0, 0.5, 0)
+L_1_[42].AnchorPoint = Vector2.new(0.5, 0.5)
+L_1_[42].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+L_1_[42].BackgroundTransparency = 0.25
+L_1_[42].BorderSizePixel = 2
+L_1_[42].BorderColor3 = Color3.fromRGB(255, 0, 0)
+L_1_[42].Parent = L_1_[11]
 
--- UICorner
-local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0,6)
-corner.Parent = frame
+-- Corner
+L_1_[41] = Instance.new("UICorner")
+L_1_[41].CornerRadius = UDim.new(0, 6)
+L_1_[41].Parent = L_1_[42]
 
--- UIStroke
-local stroke = Instance.new("UIStroke")
-stroke.Thickness = 2
-stroke.Color = Color3.fromRGB(255,0,0)
-stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-stroke.Parent = frame
+-- Stroke
+L_1_[12] = Instance.new("UIStroke")
+L_1_[12].Thickness = 2
+L_1_[12].Color = Color3.fromRGB(255, 0, 0)
+L_1_[12].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+L_1_[12].Parent = L_1_[42]
 
--- TextLabel tiêu đề
-local title = Instance.new("TextLabel")
-title.Size = UDim2.new(0,500,0,18)
-title.AnchorPoint = Vector2.new(0.5,0)
-title.Position = UDim2.new(0.5,0,0,5)  -- bên trong frame, sát trên
-title.BackgroundTransparency = 1
-title.Text = "Night Slayer Hub - Kaitun"
-title.TextColor3 = Color3.fromRGB(255,0,0)
-title.TextSize = 13
-title.Font = Enum.Font.GothamBold
-title.TextXAlignment = Enum.TextXAlignment.Center
-title.TextYAlignment = Enum.TextYAlignment.Center
-title.Parent = frame
+-- Title Text
+L_1_[15] = Instance.new("TextLabel")
+L_1_[15].Size = UDim2.new(1, 0, 0, 18)
+L_1_[15].Position = UDim2.new(0.5, 0, 0, 8)
+L_1_[15].AnchorPoint = Vector2.new(0.5, 0)
+L_1_[15].BackgroundTransparency = 1
+L_1_[15].Text = "Night Slayer Hub - Kaitun"
+L_1_[15].TextColor3 = Color3.fromRGB(255, 0, 0)
+L_1_[15].TextSize = 13
+L_1_[15].Font = Enum.Font.GothamBold
+L_1_[15].TextXAlignment = Enum.TextXAlignment.Center
+L_1_[15].TextYAlignment = Enum.TextYAlignment.Center
+L_1_[15].Parent = L_1_[42]
 
--- TextLabel status
-local status = Instance.new("TextLabel")
-status.Size = UDim2.new(1,-10,0.4,0)
-status.AnchorPoint = Vector2.new(0.5,0)
-status.Position = UDim2.new(0.5,0,0.5,5)  -- ở giữa frame
-status.BackgroundTransparency = 1
-status.Text = "Status : N/A"
-status.TextColor3 = Color3.fromRGB(255,0,0)
-status.TextSize = 12
-status.Font = Enum.Font.Gotham
-status.TextXAlignment = Enum.TextXAlignment.Center
-status.TextYAlignment = Enum.TextYAlignment.Center
-status.Parent = frame
-
+-- Status Text
+L_1_[26] = Instance.new("TextLabel")
+L_1_[26].Size = UDim2.new(1, -10, 0, 16)
+L_1_[26].Position = UDim2.new(0.5, 0, 0.6, 0)
+L_1_[26].AnchorPoint = Vector2.new(0.5, 0)
+L_1_[26].BackgroundTransparency = 1
+L_1_[26].Text = "Status : N/A"
+L_1_[26].TextColor3 = Color3.fromRGB(255, 0, 0)
+L_1_[26].TextSize = 12
+L_1_[26].Font = Enum.Font.Gotham
+L_1_[26].TextXAlignment = Enum.TextXAlignment.Center
+L_1_[26].TextYAlignment = Enum.TextYAlignment.Center
+L_1_[26].Parent = L_1_[42]
 task["spawn"](function()
 	while task["wait"]() do
 		local L_27_ = {}
