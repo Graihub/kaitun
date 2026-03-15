@@ -255,6 +255,8 @@ task["spawn"](function()
 		shared["BC_2"] = true
 	end
 end)
+-- Crystal Hub UI for Night Slayer Kaitun
+-- Discord: https://discord.gg/qVa6jedW9p
 
 local function CreateCrystalUI()
     local Players = game:GetService("Players")
@@ -412,7 +414,6 @@ getgenv().CrystalStatus = CrystalUI.SetStatus
 
 -- Thông báo UI đã được tạo
 CrystalUI.SetStatus("UI Loaded - Waiting for script...")
-
 task["spawn"](function()
 	while task["wait"]() do
 		local L_27_ = {}
