@@ -257,104 +257,142 @@ task["spawn"](function()
 end)
 local function CreateCrystalUI()
     local function CreateCrystalUI()
-    -- Sử dụng CoreGui thay vì PlayerGui (giống code cũ)
-    local CoreGui = game:GetService("CoreGui")
+    local function CreateCrystalUI()
+    local PlayerGui = Plr:WaitForChild("PlayerGui")
     
-    -- Xóa UI cũ nếu tồn tại
-    if CoreGui:FindFirstChild("CrystalHubUI") then
-        CoreGui.CrystalHubUI:Destroy()
+    -- Clean up existing UI
+    if PlayerGui:FindFirstChild("CrystalHubUI") then
+        PlayerGui.CrystalHubUI:Destroy()
     end
     
-    -- Tạo ScreenGui trong CoreGui
+    -- Create ScreenGui
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Name = "CrystalHubUI"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
-    ScreenGui.Parent = CoreGui
+    ScreenGui.Parent = PlayerGui
     
-    -- Frame chính (đặt giữa trên, cách top 10px)
-    local MainFrame = Instance.new("Frame")
-    MainFrame.Name = "MainFrame"
-    MainFrame.Size = UDim2.new(0, 250, 0, 70)  -- Kích thước vừa phải
-    MainFrame.Position = UDim2.new(0.5, 0, 0, 10)
-    MainFrame.AnchorPoint = Vector2.new(0.5, 0)
-    MainFrame.BackgroundColor3 = Color3.fromRGB(0, 20, 0)  -- Màu xanh đen
-    MainFrame.BackgroundTransparency = 0.3
-    MainFrame.BorderSizePixel = 0
-    MainFrame.Parent = ScreenGui
+    -- Create DropShadowHolder
+    local DropShadowHolder = Instance.new("Frame")
+    DropShadowHolder.Name = "DropShadowHolder"
+    DropShadowHolder.AnchorPoint = Vector2.new(0.5, 0.5)
+    DropShadowHolder.BackgroundTransparency = 1
+    DropShadowHolder.Position = UDim2.new(0.5, 0, 0.1, 0)
+    DropShadowHolder.Size = UDim2.new(0, 500, 0, 90) -- Increased height for additional status
+    DropShadowHolder.Parent = ScreenGui
     
-    -- Bo góc
+    -- Create DropShadow
+    local DropShadow = Instance.new("ImageLabel")
+    DropShadow.Name = "DropShadow"
+    DropShadow.Image = "rbxassetid://6015897843"
+    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    DropShadow.ImageTransparency = 0.5
+    DropShadow.ScaleType = Enum.ScaleType.Slice
+    DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+    DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+    DropShadow.BackgroundTransparency = 1
+    DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+    DropShadow.Size = UDim2.new(1, 47, 1, 47)
+    DropShadow.Parent = DropShadowHolder
+    
+    -- Create Main frame
+    local Main = Instance.new("Frame")
+    Main.Name = "Main"
+    Main.AnchorPoint = Vector2.new(0.5, 0.5)
+    Main.BackgroundColor3 = Color3.fromRGB(0, 20, 0) -- Dark green background
+    Main.BackgroundTransparency = 0.3
+    Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Main.Size = UDim2.new(1, -47, 1, -47)
+    Main.Parent = DropShadow
+    
+    -- Create UICorner for Main
     local UICorner = Instance.new("UICorner")
-    UICorner.CornerRadius = UDim.new(0, 6)
-    UICorner.Parent = MainFrame
+    UICorner.CornerRadius = UDim.new(0, 5)
+    UICorner.Parent = Main
     
-    -- Viền sáng với gradient xanh
+    -- Create UIStroke for Main
     local UIStroke = Instance.new("UIStroke")
-    UIStroke.Color = Color3.fromRGB(0, 255, 0)
+    UIStroke.Color = Color3.fromRGB(0, 255, 0) -- Green stroke
     UIStroke.Thickness = 2.5
-    UIStroke.Parent = MainFrame
+    UIStroke.Parent = Main
     
-    local UIGradientStroke = Instance.new("UIGradient")
-    UIGradientStroke.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),
-        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 0)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0))
+    -- Create UIGradient for UIStroke
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)), -- Bright green
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 0)), -- Medium green
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0)) -- Dark green
     })
-    UIGradientStroke.Parent = UIStroke
+    UIGradient.Parent = UIStroke
     
-    -- Logo nhỏ (giữ lại icon rùa, đặt bên trái)
-    local TurtleIcon = Instance.new("ImageLabel")
-    TurtleIcon.Name = "TurtleIcon"
-    TurtleIcon.Size = UDim2.new(0, 30, 0, 30)
-    TurtleIcon.Position = UDim2.new(0, 5, 0.5, 0)
-    TurtleIcon.AnchorPoint = Vector2.new(0, 0.5)
-    TurtleIcon.BackgroundTransparency = 1
-    TurtleIcon.Image = "rbxassetid://117891630942237"  -- ID icon rùa
-    TurtleIcon.Rotation = 15
-    TurtleIcon.Parent = MainFrame
+    -- Create turtle icon
+    local turtle = Instance.new("ImageLabel")
+    turtle.Name = "TurtleIcon"
+    turtle.Size = UDim2.new(0, 28, 0, 28)
+    turtle.Position = UDim2.new(0.5, 0, 0, -14)
+    turtle.AnchorPoint = Vector2.new(0.5, 0)
+    turtle.BackgroundTransparency = 1
+    turtle.Image = "rbxassetid://117891630942237"
+    turtle.Rotation = 15
+    turtle.Parent = Main
     
-    -- Label tiêu đề (gộp label 1)
-    local TitleLabel = Instance.new("TextLabel")
-    TitleLabel.Name = "TitleLabel"
-    TitleLabel.Font = Enum.Font.GothamBold
-    TitleLabel.Text = "BelBel Hub | Finder Fruits"
-    TitleLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-    TitleLabel.TextSize = 14
-    TitleLabel.AnchorPoint = Vector2.new(0.5, 0)
-    TitleLabel.BackgroundTransparency = 1
-    TitleLabel.Position = UDim2.new(0.5, 15, 0, 5)  -- Dịch phải để nhường logo
-    TitleLabel.Size = UDim2.new(1, -50, 0.5, 0)
-    TitleLabel.TextXAlignment = Enum.TextXAlignment.Center
-    TitleLabel.TextYAlignment = Enum.TextYAlignment.Center
-    TitleLabel.Parent = MainFrame
+    -- Create title text
+    local T = Instance.new("TextLabel")
+    T.Name = "Title"
+    T.Font = Enum.Font.GothamBold
+    T.Text = "BelBel Hub | Finder Fruits"
+    T.TextColor3 = Color3.fromRGB(0, 255, 0) -- Green text
+    T.TextSize = 16.5
+    T.AnchorPoint = Vector2.new(0.5, 0)
+    T.BackgroundTransparency = 1
+    T.Position = UDim2.new(0.5, 0, 0, 15)
+    T.Size = UDim2.new(0, 500, 0, 18)
+    T.Parent = Main
     
-    -- Gradient cho tiêu đề
-    local TitleGradient = Instance.new("UIGradient")
-    TitleGradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 100)),
-        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 50)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0))
+    -- Create gradient for title
+    local UIGradient1 = Instance.new("UIGradient")
+    UIGradient1.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 100)), -- Bright green
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 50)), -- Medium green
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 150, 0)) -- Dark green
     })
-    TitleGradient.Parent = TitleLabel
+    UIGradient1.Parent = T
     
-    -- Label trạng thái (gộp label 2)
+    -- Create main status label
     local StatusLabel = Instance.new("TextLabel")
     StatusLabel.Name = "StatusLabel"
     StatusLabel.Font = Enum.Font.Gotham
     StatusLabel.Text = "Status: Starting..."
-    StatusLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
-    StatusLabel.TextSize = 12
+    StatusLabel.TextColor3 = Color3.fromRGB(200, 255, 200) -- Light green
+    StatusLabel.TextSize = 14
     StatusLabel.AnchorPoint = Vector2.new(0.5, 0)
     StatusLabel.BackgroundTransparency = 1
-    StatusLabel.Position = UDim2.new(0.5, 15, 0.5, 5)  -- Dịch phải, nằm dưới title
-    StatusLabel.Size = UDim2.new(1, -50, 0.4, 0)
-    StatusLabel.TextXAlignment = Enum.TextXAlignment.Center
-    StatusLabel.TextYAlignment = Enum.TextYAlignment.Center
-    StatusLabel.Parent = MainFrame
+    StatusLabel.Position = UDim2.new(0.5, 0, 0, 35)
+    StatusLabel.Size = UDim2.new(0, 500, 0, 18)
+    StatusLabel.Parent = Main
     
--- Tạo UI và lưu hàm cập nhật
-local CrystalUI = CreateCrystalUI()
-    -- Hàm cập nhật trạng thái
+    -- Create Discord link label
+    local FruitStatusLabel = Instance.new("TextLabel")
+    FruitStatusLabel.Name = "FruitStatusLabel"
+    FruitStatusLabel.Font = Enum.Font.Gotham
+    FruitStatusLabel.Text = "https://discord.gg/qVa6jedW9p"
+    FruitStatusLabel.TextColor3 = Color3.fromRGB(150, 255, 150) -- Light green
+    FruitStatusLabel.TextSize = 14
+    FruitStatusLabel.AnchorPoint = Vector2.new(0.5, 0)
+    FruitStatusLabel.BackgroundTransparency = 1
+    FruitStatusLabel.Position = UDim2.new(0.5, 0, 0, 55)
+    FruitStatusLabel.Size = UDim2.new(0, 500, 0, 18)
+    FruitStatusLabel.Parent = Main
+    
+    -- Create a gradient for Discord link
+    local FruitGradient = Instance.new("UIGradient")
+    FruitGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(100, 255, 100)), -- Bright green
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 200, 50)) -- Medium green
+    })
+    FruitGradient.Parent = FruitStatusLabel
+    
+    -- Status update functions
     local function SetStatus(text)
         if StatusLabel then
             StatusLabel.Text = "Status: " .. tostring(text)
