@@ -267,8 +267,8 @@ L_1_[11]["Parent"] = L_1_[43]
 
 L_1_[42] = Instance["new"]("Frame")
 L_1_[42]["Size"] = UDim2["new"](0, 250, 0, 70)
-L_1_[42]["Position"] = UDim2["new"](.5, 0, 0, 10)  -- Giữa trên (cách top 10px)
-L_1_[42]["AnchorPoint"] = Vector2["new"](.5, 0)    -- AnchorPoint giữa trên
+L_1_[42]["Position"] = UDim2["new"](.5, 0, 0, 10)  -- Giữa theo chiều ngang, cách trên 10px
+L_1_[42]["AnchorPoint"] = Vector2["new"](.5, 0)    -- Neo ở giữa trên
 L_1_[42]["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
 L_1_[42]["BackgroundTransparency"] = .25
 L_1_[42]["BorderSizePixel"] = 2
@@ -289,7 +289,7 @@ L_LOGO["Size"] = UDim2["new"](0, 30, 0, 30)
 L_LOGO["Position"] = UDim2["new"](0, 5, .5, 0)
 L_LOGO["AnchorPoint"] = Vector2["new"](0, .5)
 L_LOGO["BackgroundTransparency"] = 1
-L_LOGO["Image"] = "rbxassetid://1234567890"  -- Thay ID logo của bạn vào đây
+L_LOGO["Image"] = "rbxassetid://1234567890"  -- Thay ID logo của bạn
 L_LOGO["Parent"] = L_1_[42]
 
 -- Label 1 (tiêu đề chính)
