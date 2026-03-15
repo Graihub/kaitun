@@ -266,9 +266,9 @@ L_1_[11]["ResetOnSpawn"] = false
 L_1_[11]["Parent"] = L_1_[43]
 
 L_1_[42] = Instance["new"]("Frame")
-L_1_[42]["Size"] = UDim2["new"](0, 250, 0, 70)  -- Tăng kích thước để chứa logo
-L_1_[42]["Position"] = UDim2["new"](1, -10, .5, 0)
-L_1_[42]["AnchorPoint"] = Vector2["new"](1, .5)
+L_1_[42]["Size"] = UDim2["new"](0, 250, 0, 70)
+L_1_[42]["Position"] = UDim2["new"](.5, 0, 0, 10)  -- Giữa trên (cách top 10px)
+L_1_[42]["AnchorPoint"] = Vector2["new"](.5, 0)    -- AnchorPoint giữa trên
 L_1_[42]["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
 L_1_[42]["BackgroundTransparency"] = .25
 L_1_[42]["BorderSizePixel"] = 2
@@ -289,13 +289,13 @@ L_LOGO["Size"] = UDim2["new"](0, 30, 0, 30)
 L_LOGO["Position"] = UDim2["new"](0, 5, .5, 0)
 L_LOGO["AnchorPoint"] = Vector2["new"](0, .5)
 L_LOGO["BackgroundTransparency"] = 1
-L_LOGO["Image"] = "78631941162769"
+L_LOGO["Image"] = "rbxassetid://1234567890"  -- Thay ID logo của bạn vào đây
 L_LOGO["Parent"] = L_1_[42]
 
 -- Label 1 (tiêu đề chính)
 L_1_[15] = Instance["new"]("TextLabel")
-L_1_[15]["Size"] = UDim2["new"](1, -50, .5, 0)  -- Điều chỉnh kích thước
-L_1_[15]["Position"] = UDim2["new"](.5, 15, 0, 5)  -- Điều chỉnh vị trí
+L_1_[15]["Size"] = UDim2["new"](1, -50, .5, 0)
+L_1_[15]["Position"] = UDim2["new"](.5, 15, 0, 5)
 L_1_[15]["AnchorPoint"] = Vector2["new"](.5, 0)
 L_1_[15]["BackgroundTransparency"] = 1
 L_1_[15]["Text"] = "Night Slayer Hub - Kaitun"
@@ -306,10 +306,10 @@ L_1_[15]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
 L_1_[15]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
 L_1_[15]["Parent"] = L_1_[42]
 
--- Label 2 (gộp vào) - Status
+-- Label 2 (Status)
 L_1_[26] = Instance["new"]("TextLabel")
-L_1_[26]["Size"] = UDim2["new"](1, -50, .4, 0)  -- Điều chỉnh kích thước
-L_1_[26]["Position"] = UDim2["new"](.5, 15, .5, 5)  -- Điều chỉnh vị trí
+L_1_[26]["Size"] = UDim2["new"](1, -50, .4, 0)
+L_1_[26]["Position"] = UDim2["new"](.5, 15, .5, 5)
 L_1_[26]["AnchorPoint"] = Vector2["new"](.5, 0)
 L_1_[26]["BackgroundTransparency"] = 1
 L_1_[26]["Text"] = "Status : N/A"
@@ -319,8 +319,6 @@ L_1_[26]["Font"] = Enum["Font"]["Gotham"]
 L_1_[26]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
 L_1_[26]["TextYAlignment"] = Enum["TextYAlignment"]["Center"]
 L_1_[26]["Parent"] = L_1_[42]
-
--- Xóa frame cũ (L_NEW_FRAME) vì đã gộp vào L_1_[42]
 
 task["spawn"](function()
 	while task["wait"]() do
