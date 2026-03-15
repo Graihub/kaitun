@@ -267,7 +267,7 @@ L_1_[11]["Parent"] = L_1_[43]
 
 L_1_[42] = Instance["new"]("Frame")
 L_1_[42]["Size"] = UDim2["new"](0, 150, 0, 50)
-L_1_[42]["Position"] = UDim2["new"](.5, 0, .13, 0)
+L_1_[42]["Position"] = UDim2["new"](0.5, 0, 0, 15)
 L_1_[42]["AnchorPoint"] = Vector2["new"](1, .5)
 L_1_[42]["BackgroundColor3"] = Color3["fromRGB"](0, 0, 0)
 L_1_[42]["BackgroundTransparency"] = .25
