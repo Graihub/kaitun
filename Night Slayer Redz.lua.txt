@@ -48,7 +48,7 @@ end;
 		"Bizarre Revolver";
 		"Bazooka"
 	};
-	["FPS Booster"] = true
+	["FPS Booster"] = false
 }
 wait(5)
 if game["Players"]["LocalPlayer"]["PlayerGui"]:FindFirstChild("Main (minimal)") then
