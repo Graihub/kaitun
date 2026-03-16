@@ -2190,7 +2190,10 @@ L_1_[14] = function()
 			local L_49_ = {}
 			L_49_[2], L_49_[1] = L_47_forvar0, L_48_forvar1
 			if L_49_[1]:IsA("Tool") and tostring(L_49_[1]["ToolTip"]) == "Sword" then
-				(L_1_[35]["Character"]:WaitForChild("Humanoid")):EquipTool(L_49_[1])
+				local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(SelectWeapon)
+if tool then
+    game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
+end
 			end
 		end
 	else
@@ -2198,7 +2201,10 @@ L_1_[14] = function()
 			local L_52_ = {}
 			L_52_[2], L_52_[1] = L_50_forvar0, L_51_forvar1
 			if L_52_[1]:IsA("Tool") and tostring(L_52_[1]["ToolTip"]) == "Melee" then
-				(L_1_[35]["Character"]:WaitForChild("Humanoid")):EquipTool(L_52_[1])
+				local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(SelectWeapon)
+if tool then
+    game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
+end
 			end
 		end
 	end
