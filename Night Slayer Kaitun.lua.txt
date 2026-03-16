@@ -300,6 +300,10 @@ turtle.Image = "rbxassetid://103268426470966"
 turtle.Rotation = 15
 turtle.Parent = L_1_[42]
 
+local TurtleCorner = Instance.new("UICorner")
+TurtleCorner.CornerRadius = UDim.new(1, 0)
+TurtleCorner.Parent = turtle
+
 -- Title
 L_1_[15] = Instance.new("TextLabel")
 L_1_[15].Size = UDim2.new(1, 0, 0, 18)
