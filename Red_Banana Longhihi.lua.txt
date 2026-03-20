@@ -392,7 +392,7 @@ task.spawn(function()
         end
     end
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Graihub/fastattackgay/refs/heads/main/3071721359096691.txt"))()
 
 -- ==========================================
 -- SERVICES
